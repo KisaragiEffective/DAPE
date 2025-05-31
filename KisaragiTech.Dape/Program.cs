@@ -53,25 +53,24 @@ internal static class Program
             // JSONで返せるようにしておいたほうが良さそう
         }
 
-        app.Lifetime.ApplicationStarted.Register(async () =>
+        app.Lifetime.ApplicationStarted.Register(() =>
         {
-            var isInitialized = Task.Run(() =>
+            Task.Run(async () =>
             {
                 var repo = new UserRepositoryImpl(db);
+                var isInitialized = await repo.HasRootUser();
 
-                return repo.HasRootUser().AsTask();
-            }).Result;
-
-            if (isInitialized)
-            {
-                Console.WriteLine("Initialized");
-            }
-            else
-            {
-                Console.WriteLine("Not initialized");
-                // TODO: 実際のユーザー作成・挿入処理
-                // - パスワードはCSPRNGで生成すること
-            }
+                if (isInitialized)
+                {
+                    Console.WriteLine("Initialized");
+                }
+                else
+                {
+                    Console.WriteLine("Not initialized");
+                    // TODO: 実際のユーザー作成・挿入処理
+                    // - パスワードはCSPRNGで生成すること
+                }
+            });
         });
         // IPアドレスとポートは起動時に表示されるので不要
 

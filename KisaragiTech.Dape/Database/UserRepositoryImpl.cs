@@ -12,18 +12,16 @@ internal sealed class UserRepositoryImpl
         this.driver = driver;
     }
     
-    public async ValueTask<bool> HasRootUser()
+    public async Task<bool> HasRootUser()
     {
         await using var session = driver.AsyncSession(o => o.WithDefaultAccessMode(AccessMode.Read));
         
-        var doesExist = await session.ExecuteReadAsync(async tx =>
+        return await session.ExecuteReadAsync(async tx =>
         {
             // TODO: ORMてきなメソッドの方に置き換えたほうがいいかも
             const string query = "MATCH (u:User { root: true }) RETURN u LIMIT 1";
             var cursor = await tx.RunAsync(query);
             return await cursor.FetchAsync();
         });
-
-        return doesExist;
     }
 }
