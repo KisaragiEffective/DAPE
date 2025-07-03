@@ -12,6 +12,6 @@
 
     <ItemGroup>
       <PackageReference Include="CommandLineParser" Version="2.9.1" />
-      <PackageReference Include="Neo4j.Driver" Version="5.28.1" />
+      <PackageReference Include="Neo4j.Driver" Version="5.28.2" />
     </ItemGroup>
 </Project>
