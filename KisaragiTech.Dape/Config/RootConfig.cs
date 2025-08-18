@@ -5,7 +5,7 @@ namespace KisaragiTech.Dape.Config;
 
 public class RootConfig
 {
-    [JsonPropertyName("database")] public DatabaseConfig Database { get; set; }
+    [JsonPropertyName("database")] public required DatabaseConfig Database { get; init; }
 
     public static RootConfig DeserializeFromJson(string json)
     {
