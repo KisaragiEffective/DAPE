@@ -1,7 +1,13 @@
 # DAPE
 
 DAPE へようこそ！
-このプロジェクトは発展途上です。
+DAPE は Discrete ActivityPub Environment の頭字語で、実験的な SNS バックエンドの開発プロジェクトです。現段階ではコードネームであり、仕様は今後大きく変わる可能性があります。
+
+
+## 特徴
+* ActivityPub を直接実装せず、内部プロトコルを他プロトコルへ翻訳するプロキシで連携
+* バイナリ形式のスキーマによる小さなペイロード
+* キャッシュを考慮した API 設計
 
 ## 環境構築
 
@@ -27,6 +33,11 @@ DAPE は動作に以下のソフトウェアを必要とします。
 
 * Jetbrains Rider
     * [Graph Database](https://plugins.jetbrains.com/plugin/20417)
+
+### ビルド
+```shell
+$ dotnet build
+```
 
 ### DAPE の立ち上げ
 
