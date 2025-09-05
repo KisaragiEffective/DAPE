@@ -20,4 +20,11 @@
         <Using Include="Xunit"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\KisaragiTech.Dape\KisaragiTech.Dape.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EditorConfigFiles Remove=".editorconfig" />
+    </ItemGroup>
 </Project>

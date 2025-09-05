@@ -10,11 +10,21 @@ indent_size = 4
 # noinspection EditorConfigKeyCorrectness
 [*.cs]
 dotnet_diagnostic.sa0001.severity = none
+# region spacing
 # Forbids leading space on empty line.
 dotnet_diagnostic.sa1028.severity = error
 dotnet_diagnostic.sa1200.severity = none
+# SA1009: Closing parenthesis should not be preceded by a space
+dotnet_diagnostic.sa1009.severity = none
+# SA1111: Closing parenthesis should be on line of last parameter
+dotnet_diagnostic.sa1111.severity = none
+# do not require empty line before line-comments.
+dotnet_diagnostic.sa1515.severity = none
+# endregion
 # prefers access modifier -> other keywords.
 dotnet_diagnostic.sa1206.severity = none
+# SA1202: 'public' members should come before 'private' members
+dotnet_diagnostic.sa1202.severity = none
 # We prefer System namespace first.
 dotnet_diagnostic.sa1208.severity = error
 dotnet_diagnostic.sa1210.severity = none

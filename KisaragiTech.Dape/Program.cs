@@ -2,11 +2,14 @@
 using System.IO;
 using System.Threading.Tasks;
 
+// ReSharper disable once RedundantNameQualifier
 using global::CommandLine;
 using KisaragiTech.Dape.CommandLine;
 using KisaragiTech.Dape.Config;
 using Neo4j.Driver;
-using KisaragiTech.Dape.Database;
+using KisaragiTech.Dape.User.Database;
+using KisaragiTech.Dape.User.Model;
+using KisaragiTech.Dape.User.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
@@ -56,26 +59,31 @@ internal static class Program
             // JSONで返せるようにしておいたほうが良さそう
         }
 
-        app.Lifetime.ApplicationStarted.Register(async () =>
+        app.Lifetime.ApplicationStarted.Register(() =>
         {
-            var isInitialized = Task.Run(() =>
+            Task.Run(async () =>
             {
                 var repo = new UserRepositoryImpl(db);
+                var isInitialized = await repo.HasRootUser();
 
-                return repo.HasRootUser().AsTask();
-            }).Result;
-
-            if (isInitialized)
-            {
-                Console.WriteLine("Initialized");
-            }
-            else
-            {
-                Console.WriteLine("Not initialized");
-
-                // TODO: 実際のユーザー作成・挿入処理
-                // - パスワードはCSPRNGで生成すること
-            }
+                if (isInitialized)
+                {
+                    Console.WriteLine("Initialized");
+                }
+                else
+                {
+                    Console.WriteLine("Not initialized");
+                    var raw = PasswordGenerator.Generate();
+                    Console.WriteLine($"Your root password: {raw}");
+                    await repo.CreateRootUser(
+                        new LocalRegisteredUser(
+                            new UserID(Guid.NewGuid()),
+                            "root",
+                            PasswordHasher.CreateHashedPassword(raw)
+                        )
+                    );
+                }
+            });
         });
 
         // IPアドレスとポートは起動時に表示されるので不要
