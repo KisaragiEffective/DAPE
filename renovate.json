@@ -6,5 +6,6 @@
   ],
   "labels": [
     "Renovate"
-  ]
+  ],
+  "commitMessagePrefix": "build"
 }
