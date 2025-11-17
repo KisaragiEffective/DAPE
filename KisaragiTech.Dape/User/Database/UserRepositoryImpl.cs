@@ -1,23 +1,23 @@
 using System;
 using System.Threading.Tasks;
+using KisaragiTech.Dape.Database.ArcadeDB;
 using KisaragiTech.Dape.User.Interface;
 using KisaragiTech.Dape.User.Model;
-using Neo4j.Driver;
 
 namespace KisaragiTech.Dape.User.Database;
 
 internal sealed class UserRepositoryImpl
 {
-    private readonly IDriver driver;
+    private readonly IArcadeDBDriver driver;
 
-    internal UserRepositoryImpl(IDriver driver)
+    internal UserRepositoryImpl(IArcadeDBDriver driver)
     {
         this.driver = driver;
     }
 
     public async Task<bool> HasRootUser()
     {
-        await using var session = this.driver.AsyncSession(o => o.WithDefaultAccessMode(AccessMode.Read));
+        await using var session = this.driver.AsyncSession();
 
         return await session.ExecuteReadAsync(async tx =>
         {
@@ -30,7 +30,7 @@ internal sealed class UserRepositoryImpl
 
     public async Task<bool> FindUserByPreferredHandle(string preferredHandle)
     {
-        await using var session = this.driver.AsyncSession(sess => sess.WithDefaultAccessMode(AccessMode.Read));
+        await using var session = this.driver.AsyncSession();
 
         return await session.ExecuteReadAsync(async tx =>
         {
@@ -54,7 +54,7 @@ internal sealed class UserRepositoryImpl
     {
         await this.AssertPreferredHandleUniqueness(user);
 
-        await using var session = this.driver.AsyncSession(sess => sess.WithDefaultAccessMode(AccessMode.Write));
+        await using var session = this.driver.AsyncSession();
 
         await session.ExecuteWriteAsync(tx =>
         {

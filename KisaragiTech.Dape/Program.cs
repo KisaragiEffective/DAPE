@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using global::CommandLine;
 using KisaragiTech.Dape.CommandLine;
 using KisaragiTech.Dape.Config;
-using Neo4j.Driver;
+using KisaragiTech.Dape.Database.ArcadeDB;
 using KisaragiTech.Dape.User.Database;
 using KisaragiTech.Dape.User.Model;
 using KisaragiTech.Dape.User.Service;
@@ -45,7 +45,11 @@ internal static class Program
             throw new Exception("database is null");
         }
 
-        var db = GraphDatabase.Driver($"bolt://{config.Database.Host}:{config.Database.Port}", AuthTokens.Basic(config.Database.User, config.Database.Password));
+        var db = new ArcadeDBDriver(
+            $"http://{config.Database.Host}:{config.Database.Port}",
+            config.Database.Database,
+            config.Database.User,
+            config.Database.Password);
         var builder = WebApplication.CreateBuilder(args);
 
         builder.WebHost.ConfigureKestrel(serverOptions =>
