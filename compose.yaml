@@ -1,0 +1,85 @@
+services:
+  dape:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dape
+    restart: unless-stopped
+    environment:
+      - DOTNET_RUNNING_IN_CONTAINER=true
+      - ASPNETCORE_URLS=http://+:5000
+    volumes:
+      - ./run:/app/run:ro
+    command: ["--run-dir", "/app/run"]
+    networks:
+      - backend-network
+      - frontend-network
+    depends_on:
+      - redis
+      - arcadedb
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/init"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  redis:
+    image: redis:7-alpine
+    container_name: dape-redis
+    restart: unless-stopped
+    networks:
+      - backend-network
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  arcadedb:
+    image: arcadedata/arcadedb:latest
+    container_name: dape-arcadedb
+    restart: unless-stopped
+    environment:
+      - ARCADEDB_ROOT_PASSWORD=${ARCADEDB_ROOT_PASSWORD:-changeme}
+    networks:
+      - backend-network
+    volumes:
+      - arcadedb-data:/home/arcadedb/databases
+    ports:
+      - "2480:2480"
+      - "2424:2424"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:2480/api/v1/ready"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: dape-cloudflared
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARED_TOKEN}
+    networks:
+      - frontend-network
+    depends_on:
+      - dape
+    environment:
+      - TUNNEL_METRICS=0.0.0.0:9090
+
+networks:
+  backend-network:
+    driver: bridge
+    internal: false
+  frontend-network:
+    driver: bridge
+    internal: false
+
+volumes:
+  redis-data:
+    driver: local
+  arcadedb-data:
+    driver: local
