@@ -6,10 +6,13 @@ WORKDIR /app
 # Install sbt
 RUN apt-get update && \
     apt-get install -y --no-install-recommends curl gnupg && \
-    echo "deb https://repo.scala-sbt.org/scalasbt/debian all main" | tee /etc/apt/sources.list.d/sbt.list && \
-    curl -sL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823" | apt-key add && \
+    curl -sL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823" | \
+    gpg --dearmor | sudo tee /usr/share/keyrings/sbt-archive-keyring.gpg > /dev/null && \
+    echo "deb [signed-by=/usr/share/keyrings/sbt-archive-keyring.gpg] https://repo.scala-sbt.org/scalasbt/debian all main" | \
+    sudo tee /etc/apt/sources.list.d/sbt.list \
     apt-get update && \
     apt-get install -y --no-install-recommends sbt && \
+    apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 # Cache dependencies
@@ -23,7 +26,7 @@ COPY .scalafmt.conf .
 RUN sbt assembly
 
 # ===== Prepare necessary prebuilt binaries =====
-FROM debian:bookworm-slim AS prebuilt
+FROM debian:trixie-slim AS prebuilt
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends tini && \
@@ -31,7 +34,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # ===== Runtime stage =====
-FROM gcr.io/distroless/java21-debian12:nonroot
+FROM gcr.io/distroless/java25-debian13:nonroot
 
 WORKDIR /app
 
