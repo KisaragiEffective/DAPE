@@ -40,7 +40,7 @@ object Main
       }
       configJson <- IO.blocking(Files.readString(configPath))
       config     <- RootConfig.deserializeFromJson[IO](configJson)
-      _ <- IO.whenA(config.database == null) {
+      _          <- IO.whenA(config.database == null) {
         IO.raiseError(new IllegalArgumentException("database is null"))
       }
       result <- createDriverResource(config).use { driver =>

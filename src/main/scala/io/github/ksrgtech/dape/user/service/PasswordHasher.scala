@@ -13,7 +13,7 @@ object PasswordHasher {
   private val MemorySize: Int  = 65536
   private val Parallelism: Int = 2
 
-  def createHashedPassword[F[_]: { SecureRandom, Sync }](input: String): F[HashedPassword] =
+  def createHashedPassword[F[_]: {SecureRandom, Sync}](input: String): F[HashedPassword] =
     for {
       salt <- SecureRandom[F].nextBytes(SaltLength)
       hash <- Sync[F].delay {

@@ -19,7 +19,7 @@ object PasswordGenerator {
       // Symbols (adjustable)
       "!@#$%^&*()-_=+[]{}|;:,.<>?"
 
-  def generate[F[_]: { SecureRandom, MonadThrow as mt }](length: Int = 20): F[String] = for {
+  def generate[F[_]: {SecureRandom, MonadThrow as mt}](length: Int = 20): F[String] = for {
     _ <- mt.assert(length > 0, "length must be positive")
     sb = new StringBuilder(length)
     cc <- SecureRandom[F]
