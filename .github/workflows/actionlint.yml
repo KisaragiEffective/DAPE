@@ -45,7 +45,7 @@ jobs:
         with:
           persist-credentials: false
       - name: actionlint
-        uses: reviewdog/action-actionlint@93dc1f9bc10856298b6cc1a3b3239cfbbb87fe4b
+        uses: reviewdog/action-actionlint@d39025c0fb1cc41ac827852403ea94804b0e6907
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
