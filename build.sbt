@@ -31,7 +31,7 @@ lazy val root = project
 
       // Neo4j (Neo4j.Driver equivalent)
       "io.github.neotypes" %% "neotypes-core" % "1.2.1",
-      "io.github.neotypes" %% "neotypes-cats-effect" % "1.2.1",
+      "io.github.neotypes" %% "neotypes-cats-effect" % "1.2.2",
       "org.neo4j.driver" % "neo4j-java-driver" % "5.28.1",
 
       // CLI Parser (CommandLineParser equivalent)
