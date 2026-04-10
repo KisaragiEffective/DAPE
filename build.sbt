@@ -22,7 +22,7 @@ lazy val root = project
       // HTTP Server (ASP.NET Core equivalent)
       "org.http4s" %% "http4s-ember-server" % "0.23.30",
       "org.http4s" %% "http4s-dsl" % "0.23.30",
-      "org.http4s" %% "http4s-circe" % "0.23.30",
+      "org.http4s" %% "http4s-circe" % "0.23.34",
 
       // JSON (System.Text.Json equivalent)
       "io.circe" %% "circe-core" % "0.14.10",
