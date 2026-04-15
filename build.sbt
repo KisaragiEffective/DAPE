@@ -26,7 +26,7 @@ lazy val root = project
 
       // JSON (System.Text.Json equivalent)
       "io.circe" %% "circe-core" % "0.14.10",
-      "io.circe" %% "circe-generic" % "0.14.10",
+      "io.circe" %% "circe-generic" % "0.14.15",
       "io.circe" %% "circe-parser" % "0.14.10",
 
       // Neo4j (Neo4j.Driver equivalent)
