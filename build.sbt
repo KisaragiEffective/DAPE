@@ -25,7 +25,7 @@ lazy val root = project
       "org.http4s" %% "http4s-circe" % "0.23.30",
 
       // JSON (System.Text.Json equivalent)
-      "io.circe" %% "circe-core" % "0.14.10",
+      "io.circe" %% "circe-core" % "0.14.15",
       "io.circe" %% "circe-generic" % "0.14.10",
       "io.circe" %% "circe-parser" % "0.14.10",
 
