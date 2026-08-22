@@ -1,5 +1,5 @@
 # ===== Build stage =====
-FROM eclipse-temurin:25.0.1_8-jdk AS build
+FROM eclipse-temurin:25.0.4_7-jdk AS build
 
 WORKDIR /app
 
