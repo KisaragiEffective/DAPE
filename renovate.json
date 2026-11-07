@@ -13,6 +13,14 @@
         "org.http4s:*"
       ],
       "groupName": "http4s"
+    },
+    {
+      "groupName": "io.circe",
+      "matchPackageNames": [
+        "io.circe:circe-core",
+        "io.circe:circe-generic",
+        "io.circe:circe-parser"
+      ]
     }
   ]
 }
