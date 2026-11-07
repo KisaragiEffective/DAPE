@@ -39,7 +39,7 @@ lazy val root = project
       "com.monovore" %% "decline-effect" % "2.5.0",
 
       // Password Hashing (Konscious.Security.Cryptography.Argon2 equivalent)
-      "com.password4j" % "password4j" % "1.8.2",
+      "com.password4j" % "password4j" % "1.8.4",
 
       // Testing
       "org.scalameta" %% "munit" % "1.0.4" % Test,
