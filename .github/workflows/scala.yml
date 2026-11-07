@@ -1,0 +1,36 @@
+name: Scala CI
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+permissions: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Setup JDK
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+          cache: 'sbt'
+
+      - name: Check formatting
+        run: ./sbt scalafmtCheckAll
+
+      - name: Compile
+        run: ./sbt compile
+
+      - name: Run tests
+        run: ./sbt test

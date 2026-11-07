@@ -1,6 +1,25 @@
+# Scala / sbt
+target/
+.bsp/
+.metals/
+.bloop/
+project/metals.sbt
+project/project/
+*.class
+*.log
+
+# Coursier
+.coursier/
+
+# IDE
+.idea/
+*.iml
+
+# Runtime
+run/
+
+# Legacy C# (to be removed after migration)
 bin/
 obj/
 /packages/
-riderModule.iml
 /_ReSharper.Caches/
-run/

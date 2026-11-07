@@ -2,9 +2,19 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended",
-    ":semanticCommits"
+    ":semanticCommitTypeAll(build)"
   ],
   "labels": [
     "Renovate"
+  ],
+  "packageRules": [
+    {
+      "groupName": "io.circe",
+      "matchPackageNames": [
+        "io.circe:circe-core",
+        "io.circe:circe-generic",
+        "io.circe:circe-parser"
+      ]
+    }
   ]
 }

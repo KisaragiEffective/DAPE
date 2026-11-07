@@ -41,11 +41,11 @@ jobs:
     name: actionlint with reviewdog
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           persist-credentials: false
       - name: actionlint
-        uses: reviewdog/action-actionlint@93dc1f9bc10856298b6cc1a3b3239cfbbb87fe4b
+        uses: reviewdog/action-actionlint@5eaffa19a1991ecc52b11eddcdd57760d1ac7e3d
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
