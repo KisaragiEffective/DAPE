@@ -9,6 +9,12 @@
   ],
   "packageRules": [
     {
+      "matchPackageNames": [
+        "org.http4s:*"
+      ],
+      "groupName": "http4s"
+    },
+    {
       "groupName": "io.circe",
       "matchPackageNames": [
         "io.circe:circe-core",
