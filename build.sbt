@@ -35,7 +35,7 @@ lazy val root = project
       "org.neo4j.driver" % "neo4j-java-driver" % "5.28.1",
 
       // CLI Parser (CommandLineParser equivalent)
-      "com.monovore" %% "decline" % "2.5.0",
+      "com.monovore" %% "decline" % "2.6.2",
       "com.monovore" %% "decline-effect" % "2.5.0",
 
       // Password Hashing (Konscious.Security.Cryptography.Argon2 equivalent)
