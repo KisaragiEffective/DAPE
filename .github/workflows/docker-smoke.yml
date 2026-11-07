@@ -25,6 +25,15 @@ jobs:
         run: |
           docker build -t dape:test .
 
+      - name: Scan image with Trivy
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          image-ref: dape:test
+          scanners: vuln
+          severity: HIGH,CRITICAL
+          ignore-unfixed: true
+          exit-code: '1'
+
       - name: Run container
         run: |
           docker run --rm dape:test --help || (echo "Container failed to start" && exit 1)

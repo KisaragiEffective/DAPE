@@ -9,6 +9,7 @@ workflows:
     '.github/workflows/docker-smoke.yml':
         - 'actions/checkout@v6.1.0'
         - 'docker/setup-buildx-action@v4.4.1'
+        - 'aquasecurity/trivy-action@v0.36.0'
     '.github/workflows/scala.yml':
         - 'actions/checkout@v6.1.0'
         - 'actions/setup-java@v5.7.0'
@@ -31,6 +32,31 @@ dependencies:
         commit: 'sha1-b6effb05e454b25005698d916606bdc6ffcbf961'
         owner_id: 44036562
         repo_id: 196057608
+    'actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae':
+        ref: 'v5.0.5'
+        commit: 'sha1-27d5ce7f107fe9357f9df03efb73ab90386fccae'
+        owner_id: 44036562
+        repo_id: 215566462
+    'actions/cache@9255dc7a253b0ccc959486e2bca901246202afeb':
+        ref: 'v5.0.1'
+        commit: 'sha1-9255dc7a253b0ccc959486e2bca901246202afeb'
+        owner_id: 44036562
+        repo_id: 215566462
+    'actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8':
+        ref: 'v6.0.1'
+        commit: 'sha1-8e8c483db84b4bee98b60c0593521ed34d9990e8'
+        owner_id: 44036562
+        repo_id: 197814629
+    'aquasecurity/setup-trivy@3fb12ec12f41e471780db15c232d5dd185dcb514':
+        ref: 'v0.2.6'
+        commit: 'sha1-3fb12ec12f41e471780db15c232d5dd185dcb514'
+        owner_id: 12783832
+        repo_id: 869952525
+    'aquasecurity/trivy-action@v0.36.0':
+        ref: 'v0.36.0'
+        commit: 'sha1-ed142fd0673e97e23eac54620cfb913e5ce36c25'
+        owner_id: 12783832
+        repo_id: 268833180
     'docker/setup-buildx-action@v4.4.1':
         ref: 'v4.4.1'
         commit: 'sha1-f87e5991a6d7451dcb8d9637bfbc97413f497069'
