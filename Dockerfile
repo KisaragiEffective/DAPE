@@ -3,7 +3,10 @@ FROM eclipse-temurin:25.0.5_8-jdk AS build
 
 WORKDIR /app
 
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
 # Install sbt
+# hadolint ignore=DL3008
 RUN apt-get update && \
     apt-get install -y --no-install-recommends curl gnupg && \
     curl -sL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823" | \
@@ -28,6 +31,7 @@ RUN sbt assembly
 # ===== Prepare necessary prebuilt binaries =====
 FROM debian:trixie-slim AS prebuilt
 
+# hadolint ignore=DL3008
 RUN apt-get update && \
     apt-get install -y --no-install-recommends tini && \
     apt-get clean && \
