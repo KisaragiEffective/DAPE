@@ -20,9 +20,9 @@ lazy val root = project
       "org.typelevel" %% "cats-effect" % "3.6.3",
 
       // HTTP Server (ASP.NET Core equivalent)
-      "org.http4s" %% "http4s-ember-server" % "0.23.30",
-      "org.http4s" %% "http4s-dsl" % "0.23.30",
-      "org.http4s" %% "http4s-circe" % "0.23.30",
+      "org.http4s" %% "http4s-ember-server" % "0.23.38",
+      "org.http4s" %% "http4s-dsl" % "0.23.38",
+      "org.http4s" %% "http4s-circe" % "0.23.38",
 
       // JSON (System.Text.Json equivalent)
       "io.circe" %% "circe-core" % "0.14.10",
