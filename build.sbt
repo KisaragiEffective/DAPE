@@ -42,7 +42,7 @@ lazy val root = project
       "com.password4j" % "password4j" % "1.8.2",
 
       // Testing
-      "org.scalameta" %% "munit" % "1.0.4" % Test,
+      "org.scalameta" %% "munit" % "1.3.6" % Test,
       "org.typelevel" %% "munit-cats-effect" % "2.1.0" % Test
     ),
     assembly / assemblyJarName := "dape.jar",
