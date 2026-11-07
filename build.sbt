@@ -36,7 +36,7 @@ lazy val root = project
 
       // CLI Parser (CommandLineParser equivalent)
       "com.monovore" %% "decline" % "2.5.0",
-      "com.monovore" %% "decline-effect" % "2.5.0",
+      "com.monovore" %% "decline-effect" % "2.6.2",
 
       // Password Hashing (Konscious.Security.Cryptography.Argon2 equivalent)
       "com.password4j" % "password4j" % "1.8.2",
