@@ -6,5 +6,15 @@
   ],
   "labels": [
     "Renovate"
+  ],
+  "packageRules": [
+    {
+      "groupName": "io.circe",
+      "matchPackageNames": [
+        "io.circe:circe-core",
+        "io.circe:circe-generic",
+        "io.circe:circe-parser"
+      ]
+    }
   ]
 }
