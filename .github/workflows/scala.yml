@@ -1,3 +1,5 @@
+# This workflow is managed by gh actions-lock.
+
 name: Scala CI
 
 on:
@@ -14,13 +16,13 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v6.1.0
         with:
           persist-credentials: false
           fetch-depth: 0
 
       - name: Setup JDK
-        uses: actions/setup-java@v5
+        uses: actions/setup-java@v5.7.0
         with:
           distribution: 'temurin'
           java-version: '21'
