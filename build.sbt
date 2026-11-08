@@ -17,7 +17,7 @@ lazy val root = project
     libraryDependencies ++= Seq(
       // Core
       "org.typelevel" %% "cats-core" % "2.13.0",
-      "org.typelevel" %% "cats-effect" % "3.6.3",
+      "org.typelevel" %% "cats-effect" % "3.7.1",
 
       // HTTP Server (ASP.NET Core equivalent)
       "org.http4s" %% "http4s-ember-server" % "0.23.38",
