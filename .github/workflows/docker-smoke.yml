@@ -43,6 +43,9 @@ jobs:
           image: dape:test
           exit-code: '1'
           exit-level: 'warn'
+        env:
+          # See `$REPOSITORY_ROOT/Dockerfile`. The variable does not contain any secrets.
+          DOCKLE_ACCEPT_KEYS: JAVA_OPTS
 
       - name: Run container
         run: |
