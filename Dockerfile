@@ -42,7 +42,7 @@ FROM gcr.io/distroless/java25-debian13:nonroot
 
 WORKDIR /app
 
-COPY --from=build /app/target/scala-3.7.4/dape.jar /app/dape.jar
+COPY --from=build /app/target/scala-3.10.0/dape.jar /app/dape.jar
 COPY --from=prebuilt /usr/bin/tini /usr/bin/tini
 
 ENV JAVA_OPTS="-Xmx512m"
