@@ -43,7 +43,7 @@ lazy val root = project
 
       // Testing
       "org.scalameta" %% "munit" % "1.3.6" % Test,
-      "org.typelevel" %% "munit-cats-effect" % "2.1.0" % Test
+      "org.typelevel" %% "munit-cats-effect" % "2.2.1" % Test
     ),
     assembly / assemblyJarName := "dape.jar",
     assembly / mainClass := Some("io.github.ksrgtech.dape.Main"),
