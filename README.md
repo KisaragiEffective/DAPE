@@ -23,7 +23,7 @@ DAPE は動作に以下のハードウェアを必要とします。
 DAPE は動作に以下のソフトウェアを必要とします。
 
 * Neo4j 5.24
-* JDK 21 (Eclipse Temurin 推奨)
+* JDK 25 (Eclipse Temurin 推奨)
 * sbt 1.10.x
 
 ### 推奨開発環境
