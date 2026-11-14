@@ -13,7 +13,7 @@ workflows:
         - 'goodwithtech/dockle-action@v0.4.15'
     '.github/workflows/scala.yml':
         - 'actions/checkout@v7.0.1'
-        - 'actions/setup-java@v6.2.0'
+        - 'actions/setup-java@v6.3.0'
     '.github/workflows/zizmor.yml':
         - 'actions/checkout@v7.0.1'
         - 'zizmorcore/zizmor-action@v0.8.1'
@@ -38,9 +38,9 @@ dependencies:
         commit: 'sha1-3d3c42e5aac5ba805825da76410c181273ba90b1'
         owner_id: 44036562
         repo_id: 197814629
-    'actions/setup-java@v6.2.0':
-        ref: 'v6.2.0'
-        commit: 'sha1-77dd5b2ce225ea11469928ac317850245a74ae78'
+    'actions/setup-java@v6.3.0':
+        ref: 'v6.3.0'
+        commit: 'sha1-d1374f8ac74474200d16ef8ecee22c7ae7a51880'
         owner_id: 44036562
         repo_id: 196057608
     'aquasecurity/setup-trivy@3fb12ec12f41e471780db15c232d5dd185dcb514':
