@@ -30,7 +30,7 @@ lazy val root = project
       "io.circe" %% "circe-parser" % "0.14.10",
 
       // Neo4j (Neo4j.Driver equivalent)
-      "io.github.neotypes" %% "neotypes-core" % "1.2.1",
+      "io.github.neotypes" %% "neotypes-core" % "1.2.2",
       "io.github.neotypes" %% "neotypes-cats-effect" % "1.2.1",
       "org.neo4j.driver" % "neo4j-java-driver" % "5.28.1",
 
